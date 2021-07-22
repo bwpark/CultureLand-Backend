@@ -1,0 +1,74 @@
+
+entity User{
+  name String
+}
+entity Member{
+  name String,type MemberType
+}
+enum MemberType {
+  HEADOFFICE, OFFICE, DISTRIBUTOR, AGENCY, DEALER, MEMBER
+}
+entity Guild{
+  name String,description String,tags String,type GuildType,status GuildStatus
+}
+enum GuildType {
+  GAME, COMMUNITY, YELLOWPAGE, SHOP
+}
+enum GuildStatus {
+  NONE
+}
+entity GuildMember{
+  name String,type GuildMemberType,status GuildMemberStatus
+}
+enum GuildMemberType {
+  A
+}
+enum GuildMemberStatus {
+  NONE
+}
+entity Channel{
+  name String,type ChannelType,status ChannelStatus
+}
+enum ChannelType {
+  A
+}
+enum ChannelStatus {
+  NONE
+}
+entity Message{
+  title String,content String,tags String,type MessageType,status MessageStatus
+}
+enum MessageType {
+  A
+}
+enum MessageStatus {
+  NONE
+}
+entity Reply{
+  content String,type ReplyType,status ReplyStatus
+}
+enum ReplyType {
+  A
+}
+enum ReplyStatus {
+  NONE
+}
+entity Reaction{
+  type ReactionType,status ReactionStatus
+}
+enum ReactionType {
+  LIKE, DISLIKE, NONE
+}
+enum ReactionStatus {
+  NONE
+}
+ 
+relationship OneToMany{
+
+  Guild to GuildMember
+  Member to GuildMember
+  Guild to Channel
+  Channel to Message
+  Message to Reply
+  Reply to Reaction
+}
